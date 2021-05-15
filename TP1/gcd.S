@@ -58,7 +58,7 @@ euclides_loop:
 
 fin_euclides_loop:
     sw t3, 8(t1) # guardo el gdb
-    addi t1, t1, 96 # muevo la direccion 12 bytes
+    addi t1, t1, 96 # muevo la direccion ACA ESTA EL PROBLEMA NO SE CUANTO BIEN HAY QUE MOVERLO, PROBE CON 12, 48 y 96
     addi t2, t2, -12 # resto el tamanio de lo que tengo que hacer
     bnez t2, for
     
