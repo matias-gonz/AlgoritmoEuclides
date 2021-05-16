@@ -1,13 +1,14 @@
 #include <stddef.h>
 #include <assert.h>
 #include "gcd.h"
-/*
+
 #define MAX(x, y) ((x) >= (y) ? (x) : (y))
 #define MIN(x, y) ((x) <= (y) ? (x) : (y))
 
 static int euclides_(int, int);
 
-void euclides(struct gcd *gcd, size_t n)
+void
+euclides(struct gcd *gcd, size_t n)
 {
 	size_t k;
 
@@ -15,8 +16,8 @@ void euclides(struct gcd *gcd, size_t n)
 	((x) < 0 ? -(x) : (x))
 
 	for (k = 0; k < n; ++k)
-		gcd[k].gcd_ab = euclides_(ABS(gcd[k].num_a),
-								  ABS(gcd[k].num_b));
+       		gcd[k].gcd_ab = euclides_(ABS(gcd[k].num_a), 
+		                          ABS(gcd[k].num_b));
 }
 
 static int
@@ -26,8 +27,7 @@ euclides_(int a, int b)
 	int r1 = MIN(a, b);
 	int r0;
 
-	while (1)
-	{
+	while (1) {	
 		if ((r0 = r2 % r1) == 0)
 			break;
 		r2 = r1;
@@ -35,4 +35,4 @@ euclides_(int a, int b)
 	}
 
 	return r1;
-}*/
+}

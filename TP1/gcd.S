@@ -1,5 +1,4 @@
 #include <sys/regdef.h>
-#include <sys/syscall.h>
 
 #define frame_size 24
 #define fp_offset 20
