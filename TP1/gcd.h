@@ -3,7 +3,8 @@
 
 #include <stddef.h>
 
-struct gcd {
+struct gcd
+{
 	int num_a;
 	int num_b;
 	int gcd_ab;
