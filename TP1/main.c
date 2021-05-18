@@ -53,6 +53,8 @@ int main(int argc, char **argv)
             error = 1;
         }
     }
+    
+    free(gcd);
 
     return error;
 }
