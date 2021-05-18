@@ -299,6 +299,14 @@ $L9:
 	li	$2,1			# 0x1
 	sw	$2,32($fp)
 $L10:
+	lw	$4,36($fp)
+	lw	$2,%call16(free)($28)
+	move	$25,$2
+	.reloc	1f,R_MIPS_JALR,free
+1:	jalr	$25
+	nop
+
+	lw	$28,24($fp)
 	lw	$2,32($fp)
 	move	$sp,$fp
 	lw	$31,76($sp)
