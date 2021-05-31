@@ -57,6 +57,7 @@ struct gcd *read_file(FILE* file, size_t *len){
         if(parse_line_success == 1)
         {
             perror("Error while parsing line");
+            free(gcd);
             return NULL;
         }
     }
