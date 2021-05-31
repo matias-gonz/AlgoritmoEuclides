@@ -10,12 +10,18 @@ int parse_line(char* line, int* a, int* b){
         return 1;
 
     *a = atoi(found);
+    if(*a == 0){
+        return 1;
+    }
 
     found = strtok(NULL," ");
     if(!found)
         return 1;
 
     *b = atoi(found);
+    if(*b == 0){
+        return 1;
+    }
 
     found = strtok(NULL," ");
     if(found)
@@ -30,13 +36,19 @@ struct gcd *read_file(FILE* file, size_t *len){
     int a, b;
     int line_read = fscanf(file, "%99[^\n]\n", line);
     if(line_read == EOF){
-        perror("Empty file");
+        if(fprintf(stderr, "Error: Empty file\n") < 0) {
+            perror("Error at fprintf");
+            exit(1);
+        }
         return NULL;
     }
     int parse_line_success = parse_line(line,&a,&b);
     if(parse_line_success == 1)
     {
-        perror("Error while parsing line");
+        if(fprintf(stderr, "Error while parsing line\n") < 0) {
+            perror("Error at fprintf");
+            exit(1);
+        }
         return NULL;
     }
 
@@ -45,7 +57,10 @@ struct gcd *read_file(FILE* file, size_t *len){
         gcd = realloc(gcd, ((*len) + 1) * sizeof(struct gcd));
         if (!gcd)
         {
-            perror("Error realloc");
+            if(fprintf(stderr, "Error at realloc\n") < 0) {
+                perror("Error at fprintf");
+                exit(1);
+            }
             return NULL;
         }
         gcd[*len].num_a = a;
@@ -56,7 +71,11 @@ struct gcd *read_file(FILE* file, size_t *len){
             parse_line_success = parse_line(line,&a,&b);
         if(parse_line_success == 1)
         {
-            perror("Error while parsing line");
+            if(fprintf(stderr, "Error while parsing line\n") < 0) {
+                perror("Error at fprintf");
+                free(gcd);
+                exit(1);
+            }
             free(gcd);
             return NULL;
         }
